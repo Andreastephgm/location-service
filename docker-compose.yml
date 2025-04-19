@@ -1,12 +1,15 @@
 services:
   location-db:
     image: mysql:8.0
-    container_name: location-db
-    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: filomena19
       MYSQL_DATABASE: hogar360_location
     ports:
       - "3307:3306"
     volumes:
-      - ./src/main/resources/database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+
+
+
